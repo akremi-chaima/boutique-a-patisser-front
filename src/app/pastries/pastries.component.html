@@ -1,0 +1,111 @@
+
+<section  *ngIf="hideBanner != true" class="shop spad ">
+  <div class="container">
+    <div class="shop-option">
+      <div class="row">
+        <div class="col-lg-7 col-md-7">
+          <div class="shop-option-search">
+            <form action="#">
+              <select>
+                <option value="">Categories</option>
+                <option value="">Red Velvet</option>
+                <option value="">Cup Cake</option>
+                <option value="">Biscuit</option>
+              </select>
+              <input type="text" placeholder="Search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5">
+          <div class="shop-option-right">
+            <select>
+              <option value="">Default sorting</option>
+              <option value="">A to Z</option>
+              <option value="">1 - 8</option>
+              <option value="">Name</option>
+            </select>
+            <a href="#"><i class="fa fa-list"></i></a>
+            <a href="#"><i class="fa fa-reorder"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastries">
+          <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
+            <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
+              <div class="product-label">
+                <span> {{ pastry.name}} </span>
+              </div>
+            </div>
+            <div class="product-item-text">
+              <h6><a href="#">Dozen Cupcakes</a></h6>
+              <div class="product-item-price">{{pastry.price}} £</div>
+            </div>
+          </div>
+        </div>
+
+    <div class="shop-last-option">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="shop-pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#"><span class="arrow_carrot-right"></span></a>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="shop-last-text">
+            <p>Showing 1-9 of 10 results</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content description">
+      <div class="modal-header title-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="section-title">
+          <h2 class="modal-title text-center" id="exampleModalLabel">{{selectedPastry?.name}}</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-4">
+              <img class="img-fluid rounded" src="assets/img/pastries/product-1.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <div class="price">{{selectedPastry?.price}} £</div>
+
+              <div class="panier">
+                <div class="primary-btn">
+                  <a href="#">Add to cart</a>
+                </div>
+                <div class="panier-quantity">
+                  <button class="btn-remove" (click)="remove(selectedPastry)">-</button>
+                  <span class="quantity">1</span>
+                  <button class="btn-add" (click)="add(selectedPastry)">+</button>
+                </div>
+              </div>
+              <h4>Description du produit:</h4>
+              <p>{{selectedPastry?.description}}</p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+

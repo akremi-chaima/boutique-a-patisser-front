@@ -1,0 +1,58 @@
+.team {
+  padding-bottom: 70px;
+}
+
+.team-btn {
+  text-align: right;
+}
+.team-btn .primary-btn {
+  border: 2px solid #b7b7b7;
+  background: transparent;
+  color: #111111;
+}
+
+.team-item {
+  height: 360px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.team-item:hover .team-item-text {
+  opacity: 1;
+  bottom: 0;
+  visibility: visible;
+}
+
+.team-item-text {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 0;
+  position: absolute;
+  left: 0;
+  bottom: -500px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all, 0.5s;
+  -o-transition: all, 0.5s;
+  transition: all, 0.5s;
+}
+.team-item-text h6 {
+  color: #111111;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.team-item-text span {
+  color: #111111;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.team-item-social a {
+  display: inline-block;
+  color: #111111;
+  font-size: 16px;
+  margin-right: 14px;
+}

@@ -1,0 +1,87 @@
+.contact .map {
+  height: 400px;
+  margin-bottom: 70px;
+}
+
+.contact-address {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e8eff4;
+  margin-bottom: 70px;
+}
+
+.contact-address-item {
+  margin-bottom: 30px;
+}
+.contact-address-item h6 {
+  color: #111111;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.contact-address-item ul li {
+  list-style: none;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.contact-address-item ul li:last-child {
+  margin-bottom: 0;
+}
+.contact-address-item ul li span {
+  font-size: 24px;
+  color: #111111;
+  margin-right: 25px;
+  float: left;
+}
+.contact-address-item ul li p {
+  font-size: 14px;
+  color: #444444;
+  line-height: 26px;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.contact-text h3 {
+  color: #111111;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+.contact-text ul {
+  margin-bottom: 35px;
+}
+.contact-text ul li {
+  list-style: none;
+  font-size: 16px;
+  color: #444444;
+  line-height: 36px;
+}
+
+.contact-form form input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #e1e1e1;
+  background: #fafafa;
+  font-size: 14px;
+  color: #111111;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+.contact-form form input:last-child {
+  color: #111111;
+}
+.contact-form form textarea {
+  width: 100%;
+  height: 140px;
+  border: 1px solid #e1e1e1;
+  background: #fafafa;
+  font-size: 14px;
+  color: #111111;
+  padding-left: 20px;
+  padding-top: 12px;
+  margin-bottom: 24px;
+  resize: none;
+}
+.contact-form form textarea:last-child {
+  color: #111111;
+}
