@@ -7,12 +7,12 @@ import { ShopComponent } from './shop/shop.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'subscription', component: SubscriptionComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

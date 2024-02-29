@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row" >
-        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastries">
+        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
           <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
             <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
               <div class="product-label">
@@ -46,23 +46,27 @@
           </div>
         </div>
 
-    <div class="shop-last-option">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="shop-pagination">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#"><span class="arrow_carrot-right"></span></a>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="shop-last-text">
-            <p>Showing 1-9 of 10 results</p>
-          </div>
+      <div class="text-center mb-3">
+        <div class="paginator-content">
+          <nav>
+            <ul class="pagination">
+              <li class="page-item">
+              <span class="page-link paginator-color" href="#" aria-label="Previous" (click)="getPastries(currentPage - 1)">
+                  <span aria-hidden="true">&laquo;</span>
+              </span>
+              </li>
+              <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages">
+                 <span class="page-link paginator-color" (click)="getPastries(page)">{{ page }}</span>
+              </li>
+              <li class="page-item">
+                 <span class="page-link paginator-color" href="#" aria-label="Next" (click)="getPastries(currentPage + 1)">
+                     <span aria-hidden="true">&raquo;</span>
+                 </span>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-    </div>
   </div>
   </div>
 </section>

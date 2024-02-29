@@ -80,8 +80,8 @@
       <div class="col-lg-12">
         <nav class="header-menu mobile-menu">
           <ul>
-            <li class="active" [className]="router.url == '/' ? 'active' : ''">
-              <a routerLink="/home">Home</a>
+            <li class="active" [className]="router.url.includes('home') ? 'active' : ''">
+              <a routerLink="home">Home</a>
             </li>
             <li [className]="router.url.includes('about') ? 'active' : ''">
               <a routerLink="/about-us">About</a>
@@ -100,10 +100,10 @@
               </ul>
             </li>
             <li [className]="router.url.includes('subscription') ? 'active' : ''">
-              <a routerLink="/subscription">Nous rejoindre</a>
+              <a routerLink="subscription">Nous rejoindre</a>
             </li>
             <li [className]="router.url.includes('contact') ? 'active' : ''">
-              <a routerLink="/contact">Contact</a>
+              <a routerLink="contact">Contact</a>
             </li>
           </ul>
         </nav>

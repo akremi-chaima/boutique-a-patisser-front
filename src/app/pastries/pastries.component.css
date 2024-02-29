@@ -172,7 +172,7 @@ product {
   margin-bottom: 40px;
 }
 .product-item:hover .product-item-pic .product-label span {
-  background: #f08632;
+  background: #FDAFCA;
   color: #ffffff;
 }
 .product-item:hover .product-item-text .product-item-price {

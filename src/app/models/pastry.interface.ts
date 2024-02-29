@@ -1,10 +1,9 @@
 import { CategoryInterface } from './category.interface';
 import { FlavourInterface } from './flavour.interface';
-import { SubCollectionInterface } from './subCollection.interface';
-import { PictureInterface } from './picture.interface';
+import { SubCollectionInterface } from './subCollection.interface'
 
 export interface PastryInterface {
-  id: number;
+  id: number|null;
   name : string;
   price : number;
   description : string;
@@ -12,5 +11,5 @@ export interface PastryInterface {
   category : CategoryInterface;
   subCollection : SubCollectionInterface;
   flavour: FlavourInterface;
-  pictures: Array<PictureInterface>;
+  picture: string;
 }

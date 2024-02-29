@@ -81,7 +81,7 @@ ol {
   text-transform: uppercase;
   padding: 14px 30px;
   color: #ffffff;
-  background: #f08632;
+  background: #FDAFCA;
   letter-spacing: 2px;
   cursor: pointer;
   border: none;
@@ -91,7 +91,7 @@ ol {
   margin-bottom: 35px;
 }
 .section-title span {
-  color: #f08632;
+  color: #FDAFCA;
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
@@ -274,4 +274,23 @@ ol {
   font-size: 14px;
   color: #444444;
   margin-bottom: 10px;
+}
+
+
+.paginator-content {
+  margin: auto;
+  display: flex;
+}
+
+.pagination li span {
+  cursor: pointer;
+}
+
+.pagination .page-item-active span {
+  background-color: #FDAFCA;
+  color: #ffffff !important;
+}
+
+.paginator-color {
+  color: black !important;
 }
