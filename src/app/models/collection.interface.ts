@@ -1,5 +1,5 @@
 export interface CollectionInterface {
-  id: number;
+  id: number|null;
   name : string;
   isActive : boolean;
 }
