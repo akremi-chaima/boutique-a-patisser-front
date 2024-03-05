@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'subscription', component: SubscriptionComponent },
-  { path: 'administration/pastry/update', component: UpdatePastryComponent },
+  { path: 'administration/pastry/update/:id', component: UpdatePastryComponent },
   { path: 'administration/pastry/create', component: CreatePastryComponent },
   { path: '**', component: HomeComponent },
 ];

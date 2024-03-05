@@ -41,7 +41,6 @@ export class CreatePastryComponent {
     },
     name: {
       required: `Ce champ est obligatoire.`,
-      pattern: `La valeur saisie n'est pas valide.`
     },
     description: {
       required: `Ce champ est obligatoire.`,
@@ -102,7 +101,7 @@ export class CreatePastryComponent {
     this.form.addControl('flavourId', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('price', this.formBuilder.control('', [Validators.required, Validators.pattern(/^\d*\.?\d*$/)]));
     this.form.addControl('description', this.formBuilder.control('', [Validators.required]));
-    this.form.addControl('name', this.formBuilder.control('', [Validators.required, Validators.pattern(/^([a-zA-Z ]+)$/)]));
+    this.form.addControl('name', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('isVisible', this.formBuilder.control(true, [Validators.required]));
   }
 
@@ -145,7 +144,7 @@ export class CreatePastryComponent {
   }
 
   cancel() {
-
+    this.router.navigate(['home']);
   }
 
 }

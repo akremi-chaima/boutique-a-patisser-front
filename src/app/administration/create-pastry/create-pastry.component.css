@@ -30,21 +30,3 @@
 }
 
 
-.form-card {
-  padding: 30px 30px;
-  width: 80%;
-  margin: auto;
-  display: flex;
-  border-radius: 10px;
-  background: #FEF6F7;
-}
-
-.form-card form {
-  width: 100%;
-  margin: auto;
-}
-
-.form-check-input:checked {
-  background-color: #FE8EBF !important;
-  border-color: #FE8EBF !important;
-}
