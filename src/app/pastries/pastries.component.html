@@ -1,34 +1,81 @@
 
 <section  *ngIf="hideBanner != true" class="shop spad ">
   <div class="container">
-    <div class="shop-option">
-      <div class="row">
-        <div class="col-lg-7 col-md-7">
-          <div class="shop-option-search">
+
+    <div class="search-card mb-3">
+      <div class="search-header" (click)="searchFormVisibility(!displaySearchForm)">
+        <span class="search-title">Filtre</span>
+        <span class="icon" *ngIf="!displaySearchForm"><i class="bi bi-plus-square"></i></span>
+        <span class="icon" *ngIf="displaySearchForm" ><i class="bi bi-file-minus"></i></span>
+      </div>
+      <div class="search-form mt-3" *ngIf="displaySearchForm">
             <form [formGroup]="form">
-              <select formControlName="collectionId" (change)="loadSubCollections($event)">
-                <option value=""></option>
-                <option *ngFor="let collection of collections" [value]="collection.id">{{ collection.name }}</option>
-              </select>
-              <input type="text" placeholder="Search">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <div class="container">
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Collection:</label>
+                    <select class="form-select" formControlName="collectionId" (change)="loadSubCollections($event)">
+                        <option value=""></option>
+                        <option *ngFor="let collection of collections" [value]="collection.id">{{ collection.name }}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Sous Collection:</label>
+                    <select class="form-select" formControlName="subCollectionId">
+                         <option value=""></option>
+                         <option *ngFor="let subCollection of filteredSubCollections" [value]="subCollection.id">{{ subCollection.name }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Catégorie:</label>
+                    <select class="form-select" formControlName="categoryId">
+                      <option value=""></option>
+                      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Gout:</label>
+                    <select class="form-select" formControlName="flavourId">
+                      <option value=""></option>
+                      <option *ngFor="let flavour of flavours" [value]="flavour.id">{{ flavour.name }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Tirer par:</label>
+                    <select class="form-select" formControlName="orderBy">
+                      <option value="asc_price">Prix croissant</option>
+                      <option value="desc_price">Prix décroissant</option>
+                      <option value="asc_name">A-Z</option>
+                      <option value="desc_name">Z-A</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Mot clé:</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="XXXX">
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['name'].errors">{{ getError('name') }}</p>
+                  </div>
+                </div>
+
+             </div>
+
+              <div class="row mt-3">
+                <div class="col text-center">
+                  <button type="button" class="primary-btn" (click)="reset()">Réinitialiser</button>
+                </div>
+                <div class="col text-center">
+                  <button type="submit" class="primary-btn" (click)="search()">Rechercher</button>
+                </div>
+              </div>
             </form>
           </div>
-        </div>
-        <div class="col-lg-5 col-md-5">
-          <div class="shop-option-right">
-            <select>
-              <option value="">Default sorting</option>
-              <option value="">A to Z</option>
-              <option value="">1 - 8</option>
-              <option value="">Name</option>
-            </select>
-            <a href="#"><i class="fa fa-list"></i></a>
-            <a href="#"><i class="fa fa-reorder"></i></a>
-          </div>
-        </div>
-      </div>
     </div>
+    <!-- -->
     <div class="row" >
         <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
           <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">

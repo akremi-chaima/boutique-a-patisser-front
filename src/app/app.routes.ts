@@ -5,6 +5,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { ShopComponent } from './shop/shop.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { UpdatePastryComponent } from './administration/update-pastry/update-pastry.component';
+import { CreatePastryComponent } from './administration/create-pastry/create-pastry.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,7 +14,9 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'subscription', component: SubscriptionComponent },
-  { path: '**', component: HomeComponent }
+  { path: 'administration/pastry/update', component: UpdatePastryComponent },
+  { path: 'administration/pastry/create', component: CreatePastryComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

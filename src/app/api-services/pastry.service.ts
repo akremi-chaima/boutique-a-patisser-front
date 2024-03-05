@@ -51,13 +51,32 @@ export class PastryService {
     return this.apiService.delete<any>('delete/pastry/' + id);
   }
 
-
   /**
    * Create pastry
    * @param pastry
    */
   create(pastry: HandlePastryInterface): Observable<any> {
-    return this.apiService.post<any>('add/pastry', pastry);
+    const formData: FormData = new FormData();
+    if (pastry.picture) {
+      // @ts-ignore
+      formData.append('file', pastry.picture);
+    } else {
+      // @ts-ignore
+      formData.append('file', null);
+    }
+    formData.append('name', pastry.name);
+    formData.append('description', pastry.description);
+    // @ts-ignore
+    formData.append('price', pastry.price);
+    // @ts-ignore
+    formData.append('isVisible', pastry.isVisible);
+    // @ts-ignore
+    formData.append('categoryId', pastry.categoryId);
+    // @ts-ignore
+    formData.append('subCollectionId', pastry.subCollectionId);
+    // @ts-ignore
+    formData.append('flavourId', pastry.flavourId);
+    return this.apiService.postFile('add/pastry', formData);
   }
 
   /**

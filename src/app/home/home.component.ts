@@ -5,6 +5,7 @@ import {InstagramComponent} from "../instagram/instagram.component";
 import {ContactComponent} from "../contact/contact.component";
 import {TestimonialComponent} from "../testimonial/testimonial.component";
 import {ShopComponent} from "../shop/shop.component";
+import {UpdatePastryComponent} from "../administration/update-pastry/update-pastry.component";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ import {ShopComponent} from "../shop/shop.component";
     InstagramComponent,
     ContactComponent,
     TestimonialComponent,
-    ShopComponent
+    ShopComponent,
+    UpdatePastryComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

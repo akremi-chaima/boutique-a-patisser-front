@@ -1,0 +1,50 @@
+@media screen and (max-width: 470px) {
+  .form-card {
+    padding: 0;
+  }
+
+  .input-label {
+    display: initial;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .input-label {
+    font-size: 13px;
+  }
+
+  .container {
+    --bs-gutter-x: 0;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  .create-form .row {
+    display: block;
+  }
+
+  .create-form .row .col-5, .create-form .row-cols-2 > * {
+    width: 100%;
+  }
+}
+
+
+.form-card {
+  padding: 30px 30px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  border-radius: 10px;
+  background: #FEF6F7;
+}
+
+.form-card form {
+  width: 100%;
+  margin: auto;
+}
+
+.form-check-input:checked {
+  background-color: #FE8EBF !important;
+  border-color: #FE8EBF !important;
+}
