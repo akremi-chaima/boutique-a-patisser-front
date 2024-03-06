@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
+    private localStorageService: LocalStorageService
   ) {
     this.apiURL = environment.apiUrl + 'api/';
   }
@@ -55,11 +57,17 @@ export class ApiService {
    * (authenticated = we add his token to headers)
    */
   private headers() {
-    return {
+    const options = {
       headers: {
         'Content-Type': 'application/json'
       }
     };
+
+    if (this.localStorageService.getToken() != null) {
+      options.headers['Authorization'] = 'Bearer ' + this.localStorageService.getToken().token;
+    }
+
+    return options;
   }
 
   /**
@@ -71,7 +79,7 @@ export class ApiService {
     const options = {
       headers: {
         'Accept': 'application/json',
-        //Authorization: 'Bearer ' + this.localStorageService.getToken().token
+        Authorization: 'Bearer ' + this.localStorageService.getToken().token
       }
     };
 
