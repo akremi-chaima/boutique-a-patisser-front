@@ -6,13 +6,17 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { LoginResponseInterface } from '../models/login-response.interface';
-
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService implements CanActivate {
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   save(data: LoginResponseInterface): void {
     localStorage.setItem('token', JSON.stringify(data));
@@ -35,7 +39,7 @@ export class LocalStorageService implements CanActivate {
    * Get token information
    */
   getToken(): LoginResponseInterface {
-    if (localStorage.getItem('token')) {
+    if (isPlatformBrowser(this.platformId) && localStorage.getItem('token')) {
       return JSON.parse(localStorage.getItem('token'));
     }
     return null;
