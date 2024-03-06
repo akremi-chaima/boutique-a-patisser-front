@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactComponent } from './contact/contact.component';
-import { ShopComponent } from './shop/shop.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
-import { UpdatePastryComponent } from './administration/update-pastry/update-pastry.component';
-import { CreatePastryComponent } from './administration/create-pastry/create-pastry.component';
-import { DeletePastryComponent } from './administration/delete-pastry/delete-pastry.component';
+import { HomeComponent } from './visitor/home/home.component';
+import { AboutUsComponent } from './visitor/about-us/about-us.component';
+import { ContactComponent } from './visitor/contact/contact.component';
+import { ShopComponent } from './visitor/shop/shop.component';
+import { SubscriptionComponent } from './visitor/subscription/subscription.component';
+import { UpdatePastryComponent } from './private/administration/update-pastry/update-pastry.component';
+import { CreatePastryComponent } from './private/administration/create-pastry/create-pastry.component';
+import { DeletePastryComponent } from './private/administration/delete-pastry/delete-pastry.component';
 import { LoginComponent } from './common/login/login.component';
 import { LocalStorageService } from './api-services/local-storage.service';
 import { ConstsHelper } from './consts.helper';
-import { OrdersComponent } from './private/orders/orders.component';
+import { OrdersComponent } from './private/customer/orders/orders.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },

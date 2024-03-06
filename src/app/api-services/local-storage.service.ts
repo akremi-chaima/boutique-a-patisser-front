@@ -45,7 +45,7 @@ export class LocalStorageService implements CanActivate {
   /**
    * Check token expiration
    */
-  private checkToken() {
+  public checkToken() {
     if (this.getToken() != null) {
       const today = new Date();
       const day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();

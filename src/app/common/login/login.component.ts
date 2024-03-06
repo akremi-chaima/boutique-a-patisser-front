@@ -8,7 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { CommonModule} from '@angular/common';
-import { ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { ConstsHelper} from '../../consts.helper';
 import { LoginService} from '../../api-services/login.service';
 import { LocalStorageService} from '../../api-services/local-storage.service';
@@ -16,11 +16,12 @@ import { LocalStorageService} from '../../api-services/local-storage.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-    imports: [
-      FormsModule,
-      ReactiveFormsModule,
-      CommonModule
-    ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterLink
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -50,6 +51,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formSubmitted = false;
+    if (this.localStorageService.checkToken()) {
+      this.router.navigate(['private/orders'])
+    }
     this.initForm();
   }
 

@@ -1,0 +1,160 @@
+
+<section  *ngIf="hideBanner != true" class="shop spad ">
+  <div class="container">
+
+    <div class="search-card mb-3">
+      <div class="search-header" (click)="searchFormVisibility(!displaySearchForm)">
+        <span class="search-title">Filtre</span>
+        <span class="icon" *ngIf="!displaySearchForm"><i class="bi bi-plus-square"></i></span>
+        <span class="icon" *ngIf="displaySearchForm" ><i class="bi bi-file-minus"></i></span>
+      </div>
+      <div class="search-form mt-3" *ngIf="displaySearchForm">
+            <form [formGroup]="form">
+              <div class="container">
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Collection:</label>
+                    <select class="form-select" formControlName="collectionId" (change)="loadSubCollections($event)">
+                        <option value=""></option>
+                        <option *ngFor="let collection of collections" [value]="collection.id">{{ collection.name }}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Sous Collection:</label>
+                    <select class="form-select" formControlName="subCollectionId">
+                         <option value=""></option>
+                         <option *ngFor="let subCollection of filteredSubCollections" [value]="subCollection.id">{{ subCollection.name }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Catégorie:</label>
+                    <select class="form-select" formControlName="categoryId">
+                      <option value=""></option>
+                      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Gout:</label>
+                    <select class="form-select" formControlName="flavourId">
+                      <option value=""></option>
+                      <option *ngFor="let flavour of flavours" [value]="flavour.id">{{ flavour.name }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row row-cols-2 form-group">
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Tirer par:</label>
+                    <select class="form-select" formControlName="orderBy">
+                      <option value="asc_price">Prix croissant</option>
+                      <option value="desc_price">Prix décroissant</option>
+                      <option value="asc_name">A-Z</option>
+                      <option value="desc_name">Z-A</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label class="form-label">Mot clé:</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="XXXX">
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['name'].errors">{{ getError('name') }}</p>
+                  </div>
+                </div>
+
+             </div>
+
+              <div class="row mt-3">
+                <div class="col text-center">
+                  <button type="button" class="primary-btn" (click)="reset()">Réinitialiser</button>
+                </div>
+                <div class="col text-center">
+                  <button type="submit" class="primary-btn" (click)="search()">Rechercher</button>
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+    <!-- -->
+    <div class="row" >
+        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
+          <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
+            <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
+              <div class="product-label">
+                <span> {{ pastry.name}} </span>
+              </div>
+            </div>
+            <div class="product-item-text">
+              <h6><a href="#">Dozen Cupcakes</a></h6>
+              <div class="product-item-price">{{pastry.price}} £</div>
+            </div>
+          </div>
+        </div>
+
+      <div class="text-center mb-3">
+        <div class="paginator-content">
+          <nav>
+            <ul class="pagination">
+              <li class="page-item">
+              <span class="page-link paginator-color" href="#" aria-label="Previous" (click)="getPastries(currentPage - 1)">
+                  <span aria-hidden="true">&laquo;</span>
+              </span>
+              </li>
+              <li [className]="page == currentPage ? 'page-item-active' : 'page-item' " *ngFor="let page of pages">
+                 <span class="page-link paginator-color" (click)="getPastries(page)">{{ page }}</span>
+              </li>
+              <li class="page-item">
+                 <span class="page-link paginator-color" href="#" aria-label="Next" (click)="getPastries(currentPage + 1)">
+                     <span aria-hidden="true">&raquo;</span>
+                 </span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content description">
+      <div class="modal-header title-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="section-title">
+          <h2 class="modal-title text-center" id="exampleModalLabel">{{selectedPastry?.name}}</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-4">
+              <img class="img-fluid rounded" src="../../../assets/img/pastries/product-1.jpg" alt="">
+            </div>
+            <div class="col-8">
+              <div class="price">{{selectedPastry?.price}} £</div>
+
+              <div class="panier">
+                <div class="primary-btn">
+                  <a href="#">Add to cart</a>
+                </div>
+                <div class="panier-quantity">
+                  <button class="btn-remove" (click)="remove(selectedPastry)">-</button>
+                  <span class="quantity">1</span>
+                  <button class="btn-add" (click)="add(selectedPastry)">+</button>
+                </div>
+              </div>
+              <h4>Description du produit:</h4>
+              <p>{{selectedPastry?.description}}</p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
