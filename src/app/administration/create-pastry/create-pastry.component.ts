@@ -34,6 +34,7 @@ export class CreatePastryComponent {
   flavours: Array<FlavourInterface> = [];
   subCollections: Array<SubCollectionInterface> =[];
   errorMessage: string|null = null;
+  addedFormats: Array<string> = [];
   errors: any = {
     price: {
       required: `Ce champ est obligatoire.`,
@@ -74,6 +75,7 @@ export class CreatePastryComponent {
     this.categories = [];
     this.flavours =[];
     this.subCollections = [];
+    this.addedFormats = [];
     this.categoryService.getList().subscribe(
       response => {
         this.categories = response;
@@ -103,6 +105,7 @@ export class CreatePastryComponent {
     this.form.addControl('description', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('name', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('isVisible', this.formBuilder.control(true, [Validators.required]));
+    this.form.addControl('formats', this.formBuilder.control('', null));
   }
 
   getError(formControlValues: string): string {
@@ -131,6 +134,7 @@ export class CreatePastryComponent {
         subCollectionId : parseInt(this.form.get('subCollectionId')?.value, 10),
         flavourId : parseInt(this.form.get('flavourId')?.value, 10),
         picture : null,
+        formats: this.form.get('formats')?.value
       }
       this.pastryService.create(pastry).subscribe(
         response => {

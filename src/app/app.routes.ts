@@ -7,6 +7,7 @@ import { ShopComponent } from './shop/shop.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { UpdatePastryComponent } from './administration/update-pastry/update-pastry.component';
 import { CreatePastryComponent } from './administration/create-pastry/create-pastry.component';
+import { DeletePastryComponent } from './administration/delete-pastry/delete-pastry.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'subscription', component: SubscriptionComponent },
   { path: 'administration/pastry/update/:id', component: UpdatePastryComponent },
   { path: 'administration/pastry/create', component: CreatePastryComponent },
+  { path: 'administration/pastry/delete/:id', component: DeletePastryComponent },
   { path: '**', component: HomeComponent },
 ];
 

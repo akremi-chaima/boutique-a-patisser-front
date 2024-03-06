@@ -76,6 +76,8 @@ export class PastryService {
     formData.append('subCollectionId', pastry.subCollectionId);
     // @ts-ignore
     formData.append('flavourId', pastry.flavourId);
+    // @ts-ignore
+    formData.append('formats', pastry.formats);
     return this.apiService.postFile('add/pastry', formData);
   }
 
@@ -106,6 +108,8 @@ export class PastryService {
     formData.append('subCollectionId', pastry.subCollectionId);
     // @ts-ignore
     formData.append('flavourId', pastry.flavourId);
+    // @ts-ignore
+    formData.append('formats', pastry.formats);
     return this.apiService.postFile('update/pastry', formData);
   }
 

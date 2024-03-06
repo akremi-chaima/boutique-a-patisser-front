@@ -12,4 +12,5 @@ export interface PastryInterface {
   subCollection : SubCollectionInterface;
   flavour: FlavourInterface;
   picture: string;
+  formats: Array<string>|null;
 }

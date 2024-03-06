@@ -8,4 +8,5 @@ export interface HandlePastryInterface {
   subCollectionId : number;
   flavourId: number;
   picture: string|null;
+  formats: string|null;
 }

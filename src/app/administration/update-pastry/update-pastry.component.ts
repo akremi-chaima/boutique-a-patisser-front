@@ -10,10 +10,10 @@ import { CollectionService } from '../../api-services/collection.service';
 import { SubCollectionService } from '../../api-services/subCollection.service';
 import { CategoryService } from '../../api-services/category.service';
 import { FlavourService } from '../../api-services/flavour.service';
-import {PastryInterface} from "../../models/pastry.interface";
+import { PastryInterface } from '../../models/pastry.interface';
 import {subscribe} from "diagnostics_channel";
 import {response} from "express";
-import {HandlePastryInterface} from "../../models/handle-pastry.interface";
+import { HandlePastryInterface } from '../../models/handle-pastry.interface';
 
 @Component({
   selector:'app-update-pastry',
@@ -117,6 +117,7 @@ export class UpdatePastryComponent {
      this.form.addControl('description', this.formBuilder.control(this.pastry?.description, [Validators.required]));
      this.form.addControl('name', this.formBuilder.control(this.pastry?.name, [Validators.required]));
      this.form.addControl('isVisible', this.formBuilder.control(this.pastry?.isVisible, [Validators.required]));
+     this.form.addControl('formats', this.formBuilder.control(this.pastry?.formats, [Validators.required]));
    }
 
   getError(formControlValues: string): string {
@@ -145,6 +146,7 @@ export class UpdatePastryComponent {
         subCollectionId : parseInt(this.form.get('subCollectionId')?.value, 10),
         flavourId : parseInt(this.form.get('flavourId')?.value, 10),
         picture : null,
+        formats: this.form.get('formats')?.value
       }
 
       console.log(pastry);
