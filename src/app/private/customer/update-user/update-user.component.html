@@ -1,0 +1,55 @@
+<section class="spad">
+  <div class="form-card">
+    <div class="d-flex align-items-center h-100 ">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <form [formGroup]="form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-outline mb-1">
+                    <label class="form-label">Nom:</label>
+                    <input type="text" class="form-control form-control-lg" formControlName="firstName" placeholder="XXXX" />
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['firstName'].errors">{{ getError('firstName') }}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-outline mb-1">
+                    <label class="form-label">Prénom:</label>
+                    <input type="text" class="form-control form-control-lg" formControlName="lastName" placeholder="XXXX"/>
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['lastName'].errors">{{ getError('lastName') }}</p>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-outline mb-1">
+                    <label class="form-label">Numéro de téléphone:</label>
+                    <input type="text" class="form-control form-control-lg" formControlName="phoneNumber" placeholder="XXXX" />
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['phoneNumber'].errors">{{ getError('phoneNumber') }}</p>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-outline mb-1">
+                    <label class="form-label">Email:</label>
+                    <input type="email" class="form-control form-control-lg" formControlName="email" placeholder="XXXX" />
+                    <p class="error-message" *ngIf="formSubmitted && form.controls['email'].errors">{{ getError('email') }}</p>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col text-center">
+                    <button type="button" class="primary-btn" (click)="cancel()">Annnuler</button>
+                  </div>
+                  <div class="col text-center">
+                    <button type="submit" class="primary-btn" (click)="save()">S'inscrire</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -12,6 +12,7 @@ import { LoginComponent } from './common/login/login.component';
 import { LocalStorageService } from './api-services/local-storage.service';
 import { ConstsHelper } from './consts.helper';
 import { OrdersComponent } from './private/customer/orders/orders.component';
+import { UpdateUserComponent } from './private/customer/update-user/update-user.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'administration/pastry/delete/:id', component: DeletePastryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'private/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER, ConstsHelper.ROLE_ADMINISTRATOR] }, component: OrdersComponent },
+  { path: 'private/update/user', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateUserComponent },
   { path: '**', component: HomeComponent },
 ];
 

@@ -20,10 +20,9 @@ export class UserService {
 
   /**
    * Get user
-   * @param id
    */
-  get(id: number): Observable<UserInterface> {
-    return this.apiService.get<UserInterface>('user/' + id);
+  get(): Observable<UserInterface> {
+    return this.apiService.get<UserInterface>('private/user');
   }
 
   /**
@@ -38,7 +37,7 @@ export class UserService {
    * Update user
    * @param user
    */
-  update(user: CreateUserInterface): Observable<any> {
+  update(user: UserInterface): Observable<any> {
     return this.apiService.put<any>('update/user', user);
   }
 }
