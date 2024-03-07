@@ -3,6 +3,8 @@ import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../api-services/user.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CreateUserInterface } from '../../models/create-user.interface';
+import {response} from "express";
 
 @Component({
   selector: 'app-subscription',
@@ -22,6 +24,7 @@ export class SubscriptionComponent {
   control: FormControl;
   formSubmitted: boolean = false;
   isSamePassword: boolean = false;
+  errorMessage: string|null = null;
   errors: any = {
     firstName: {
       required: `Ce champ est obligatoire.`,
@@ -31,6 +34,7 @@ export class SubscriptionComponent {
     },
     phoneNumber: {
       required: `Ce champ est obligatoire.`,
+      pattern: `Le numéro de téléphone saisie n'est pas valide.`
     },
     password: {
       required: `Ce champ est obligatoire.`,
@@ -78,5 +82,51 @@ export class SubscriptionComponent {
     this.form.addControl('zipCode', this.formBuilder.control('', [Validators.required]));
     this.form.addControl('street', this.formBuilder.control('', [Validators.required]))
     this.form.addControl('city', this.formBuilder.control('', [Validators.required]));
+  }
+
+  save() {
+    this.formSubmitted = true;
+    this.isSamePassword = true;
+    if (this.form.valid) {
+      if (this.form.get('password').value !== this.form.get('confirmPassword').value) {
+        this.isSamePassword = false;
+      } else {
+        const user: CreateUserInterface = {
+          id: null,
+          firstName: this.form.get('firstName').value,
+          lastName: this.form.get('lastName').value,
+          phoneNumber: this.form.get('phoneNumber').value,
+          password: this.form.get('password').value,
+          email: this.form.get('email').value,
+          city: this.form.get('city').value,
+          zipCode: this.form.get('zipCode').value,
+          street: this.form.get('street').value,
+        }
+        this.userService.create(user).subscribe(
+          response => {
+           this.cancel();
+          }, error => {
+            this.errorMessage = 'oups le user ne peut pas etre créé';
+          }
+        );
+      }
+    }
+
+  }
+
+  cancel() {
+    this.router.navigate(['home']);
+  }
+
+  getError(formControlValues: string): string {
+    let errorMsg = '';
+    if (this.form.controls[formControlValues].invalid) {
+      Object.keys(this.form.controls[formControlValues].errors).map(
+        key => {
+          errorMsg = this.errors[formControlValues][key];
+        }
+      );
+    }
+    return errorMsg;
   }
 }

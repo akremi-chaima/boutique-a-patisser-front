@@ -316,3 +316,9 @@ ol {
   border-color: #FE8EBF !important;
 }
 
+.error-message {
+  margin-top: 5px;
+  color: #f93333 !important;
+  font-size: 13px;
+}
+

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserInterface } from '../models/user.interface';
-import { HandleUserInterface } from '../models/handle-user.interface';
+import { CreateUserInterface } from '../models/create-user.interface';
 import {AddressInterface} from "../models/address.interface";
 
 @Injectable({
@@ -31,7 +31,7 @@ export class UserService {
    * Create user
    * @param user
    */
-  create(user: HandleUserInterface): Observable<any> {
+  create(user: CreateUserInterface): Observable<any> {
     return this.apiService.post<any>('add/user', user);
   }
 
@@ -39,7 +39,7 @@ export class UserService {
    * Update user
    * @param user
    */
-  update(user: HandleUserInterface): Observable<any> {
+  update(user: CreateUserInterface): Observable<any> {
     return this.apiService.put<any>('update/user', user);
   }
 }
