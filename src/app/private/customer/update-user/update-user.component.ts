@@ -31,8 +31,9 @@ export class UpdateUserComponent {
     lastName: {
       required: `Ce champ est obligatoire.`,
     },
-    role: {
+    phoneNumber: {
       required: `Ce champ est obligatoire.`,
+      pattern: `Le numéro de téléphone saisie n'est pas valide.`
     },
     email: {
       required: `Ce champ est obligatoire.`,

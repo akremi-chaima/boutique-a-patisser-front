@@ -13,6 +13,7 @@ import { LocalStorageService } from './api-services/local-storage.service';
 import { ConstsHelper } from './consts.helper';
 import { OrdersComponent } from './private/customer/orders/orders.component';
 import { UpdateUserComponent } from './private/customer/update-user/update-user.component';
+import { UpdateAddressComponent } from './private/customer/update-address/update-address.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'private/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER, ConstsHelper.ROLE_ADMINISTRATOR] }, component: OrdersComponent },
   { path: 'private/update/user', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateUserComponent },
+  { path: 'private/update/address', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateAddressComponent },
   { path: '**', component: HomeComponent },
 ];
 

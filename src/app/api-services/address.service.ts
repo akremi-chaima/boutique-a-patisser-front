@@ -1,45 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
-import { UserInterface } from '../models/user.interface';
-import { CreateUserInterface } from '../models/create-user.interface';
-import {AddressInterface} from "../models/address.interface";
+import { AddressInterface } from "../models/address.interface";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AddressService {
   constructor(private apiService: ApiService) {}
 
   /**
    * Get addresses list
    */
   getList(): Observable<Array<AddressInterface>> {
-    return this.apiService.get<Array<AddressInterface>>('users');
+    return this.apiService.get<Array<AddressInterface>>('addresses');
   }
 
 
   /**
-   * Get user
-   * @param id
+   * Get address
    */
-  get(id: number): Observable<UserInterface> {
-    return this.apiService.get<UserInterface>('user/' + id);
+  get(): Observable<AddressInterface> {
+    return this.apiService.get<AddressInterface>('private/address');
   }
 
   /**
-   * Create user
-   * @param user
+   * Update address
+   * @param address
    */
-  create(user: CreateUserInterface): Observable<any> {
-    return this.apiService.post<any>('add/user', user);
-  }
-
-  /**
-   * Update user
-   * @param user
-   */
-  update(user: CreateUserInterface): Observable<any> {
-    return this.apiService.put<any>('update/user', user);
+  update(address: AddressInterface): Observable<any> {
+    return this.apiService.put<any>('update/address', address);
   }
 }
