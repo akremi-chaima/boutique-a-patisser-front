@@ -78,7 +78,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <nav class="header-menu mobile-menu">
+        <nav class="header-menu mobile-menu" *ngIf="!router.url.includes('private')">
           <ul>
             <li class="active" [className]="router.url.includes('home') ? 'active' : ''">
               <a routerLink="home">Home</a>
@@ -94,6 +94,22 @@
             </li>
             <li [className]="router.url.includes('login') ? 'active' : ''">
               <a routerLink="login">Mon compte</a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="header-menu mobile-menu" *ngIf="router.url.includes('private')">
+          <ul>
+            <li [className]="router.url.includes('orders') ? 'active' : ''">
+              <a routerLink="/private/orders">Commandes</a>
+            </li>
+            <li [className]="router.url.includes('coordinates') ? 'active' : ''">
+              <a routerLink="/private/coordinates" *ngIf="!isAdministrator">Mes coordonnées</a>
+            </li>
+            <li [className]="router.url.includes('password') ? 'active' : ''">
+              <a routerLink="/private/update/password">Modifier mot de passe</a>
+            </li>
+            <li>
+              <a (click)="logout()">Déconnexion</a>
             </li>
           </ul>
         </nav>
