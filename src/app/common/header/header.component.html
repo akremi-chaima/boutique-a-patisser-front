@@ -100,7 +100,7 @@
         <nav class="header-menu mobile-menu" *ngIf="router.url.includes('private')">
           <ul>
             <li [className]="router.url.includes('orders') ? 'active' : ''">
-              <a routerLink="/private/orders">Commandes</a>
+              <a [routerLink]="isAdministrator ? '/private/administration/orders' : '/private/orders'">Commandes</a>
             </li>
             <li [className]="router.url.includes('coordinates') ? 'active' : ''">
               <a routerLink="/private/coordinates" *ngIf="!isAdministrator">Mes coordonnées</a>

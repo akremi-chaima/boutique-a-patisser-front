@@ -11,23 +11,28 @@ import { DeletePastryComponent } from './private/administration/delete-pastry/de
 import { LoginComponent } from './common/login/login.component';
 import { LocalStorageService } from './api-services/local-storage.service';
 import { ConstsHelper } from './consts.helper';
-import { OrdersComponent } from './private/customer/orders/orders.component';
 import { UpdateUserComponent } from './private/customer/update-user/update-user.component';
 import { UpdateAddressComponent } from './private/customer/update-address/update-address.component';
+import { OrdersListComponent } from './private/administration/orders-list/orders-list.component';
+import { OrdersComponent } from './private/customer/orders/orders.component';
 
 export const routes: Routes = [
+  /*************************************************** Administrator *******************************************************/
+  { path: 'private/administration/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: OrdersListComponent },
+  { path: 'private/administration/pastry/update/:id', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: UpdatePastryComponent },
+  { path: 'private/administration/pastry/create', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: CreatePastryComponent },
+  { path: 'private/administration/pastry/delete/:id', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: DeletePastryComponent },
+  /*************************************************** Customer *******************************************************/
+  { path: 'private/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: OrdersComponent },
+  { path: 'private/update/user', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateUserComponent },
+  { path: 'private/update/address', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateAddressComponent },
+  /*************************************************** Common *******************************************************/
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'shop', component: ShopComponent },
-  { path: 'subscription', component: SubscriptionComponent },
-  { path: 'administration/pastry/update/:id', component: UpdatePastryComponent },
-  { path: 'administration/pastry/create', component: CreatePastryComponent },
-  { path: 'administration/pastry/delete/:id', component: DeletePastryComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'private/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER, ConstsHelper.ROLE_ADMINISTRATOR] }, component: OrdersComponent },
-  { path: 'private/update/user', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateUserComponent },
-  { path: 'private/update/address', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateAddressComponent },
+  { path: 'subscription', component: SubscriptionComponent },
   { path: '**', component: HomeComponent },
 ];
 

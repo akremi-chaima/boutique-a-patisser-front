@@ -8,6 +8,7 @@ import {
 import { LoginResponseInterface } from '../models/login-response.interface';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ConstsHelper } from '../consts.helper';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,11 @@ export class LocalStorageService implements CanActivate {
 
   save(data: LoginResponseInterface): void {
     localStorage.setItem('token', JSON.stringify(data));
-    this.router.navigate(['private/orders']);
+    if (data.role == ConstsHelper.ROLE_CUSTOMER) {
+      this.router.navigate(['private/orders']);
+    } else {
+      this.router.navigate(['private/administration/orders']);
+    }
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

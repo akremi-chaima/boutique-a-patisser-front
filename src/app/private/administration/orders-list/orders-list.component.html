@@ -3,14 +3,21 @@
   <tr>
     <th scope="col">N°</th>
     <th scope="col">Date</th>
+    <th scope="col">Client</th>
     <th scope="col">Statut</th>
     <th scope="col">Détails</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let order of orders">
     <th scope="row">{{ order.id }}</th>
     <td>{{ order.createdAt }}</td>
+    <td>
+      <div>Nom: {{ order.lastName + ' ' + order.firstName }}</div>
+      <div>Email: {{ order.email }}</div>
+      <div>Téléphone: {{ order.phoneNumber }}</div>
+    </td>
     <td>{{ order.status }}</td>
     <td>
       <div *ngFor="let item of order.content">
@@ -20,6 +27,7 @@
         <div *ngIf="item.formatName">Format: {{ item.formatName }}</div>
       </div>
     </td>
+    <td></td>
   </tr>
   </tbody>
 </table>
