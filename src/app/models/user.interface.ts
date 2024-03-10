@@ -5,4 +5,7 @@ export interface UserInterface {
   phoneNumber : string;
   password : string|null;
   email : string;
+  city : string;
+  zipCode : number;
+  street : string;
 }

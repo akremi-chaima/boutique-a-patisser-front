@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
-import {NgIf} from "@angular/common";
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {UserService} from "../../../api-services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UserInterface} from "../../../models/user.interface";
-import {response} from "express";
+import { Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import { UserService } from '../../../api-services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserInterface } from '../../../models/user.interface';
 
 @Component({
   selector: 'app-update-user',
   standalone: true,
     imports: [
-        NgIf,
+      CommonModule,
         ReactiveFormsModule
     ],
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
-export class UpdateUserComponent {
+export class UpdateUserComponent implements OnInit {
 
   form: FormGroup;
   user: UserInterface|null;
@@ -38,7 +43,16 @@ export class UpdateUserComponent {
     email: {
       required: `Ce champ est obligatoire.`,
       pattern: `L'adresse email saisie n'est pas valide.`
-    }
+    },
+    city: {
+      required: `Ce champ est obligatoire.`,
+    },
+    zipCode: {
+      required: `Ce champ est obligatoire.`,
+    },
+    street: {
+      required: `Ce champ est obligatoire.`,
+    },
   }
 
   constructor(
@@ -63,7 +77,6 @@ export class UpdateUserComponent {
     );
   }
 
-
   initForm() {
     this.control = this.formBuilder.control('', Validators.required);
     this.form = this.formBuilder.group({});
@@ -71,6 +84,9 @@ export class UpdateUserComponent {
     this.form.addControl('lastName', this.formBuilder.control(this.user.lastName, [Validators.required]));
     this.form.addControl('email', this.formBuilder.control(this.user.email, [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]));
     this.form.addControl('phoneNumber', this.formBuilder.control(this.user.phoneNumber, [Validators.required, Validators.pattern(/^0[1|2|3|4|5|6|7][0-9]{8}$/)]));
+    this.form.addControl('zipCode', this.formBuilder.control(this.user.zipCode, [Validators.required]));
+    this.form.addControl('street', this.formBuilder.control(this.user.street, [Validators.required]))
+    this.form.addControl('city', this.formBuilder.control(this.user.city, [Validators.required]));
   }
 
   getError(formControlValues: string): string {
@@ -94,11 +110,13 @@ export class UpdateUserComponent {
         lastName: this.form.get('lastName').value,
         email: this.form.get('email').value,
         password: null,
-        phoneNumber: this.form.get('phoneNumber').value
+        phoneNumber: this.form.get('phoneNumber').value,
+        city: this.form.get('city').value,
+        zipCode: this.form.get('zipCode').value,
+        street: this.form.get('street').value,
       }
       this.userService.update(user).subscribe(
         response => {
-          this.cancel();
         },
         error => {
           this.errorMessage = 'le user ne peut pas etre updated'
@@ -108,6 +126,6 @@ export class UpdateUserComponent {
   }
 
   cancel(){
-    this.router.navigate(['home']);
+    this.router.navigate(['private/orders']);
   }
 }

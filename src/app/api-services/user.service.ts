@@ -11,14 +11,6 @@ export class UserService {
   constructor(private apiService: ApiService) {}
 
   /**
-   * Get users list
-   */
-  getList(): Observable<Array<UserInterface>> {
-    return this.apiService.get<Array<UserInterface>>('users');
-  }
-
-
-  /**
    * Get user
    */
   get(): Observable<UserInterface> {
@@ -38,6 +30,6 @@ export class UserService {
    * @param user
    */
   update(user: UserInterface): Observable<any> {
-    return this.apiService.put<any>('update/user', user);
+    return this.apiService.put<any>('private/update/user', user);
   }
 }
