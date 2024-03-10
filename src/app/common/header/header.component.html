@@ -99,7 +99,7 @@
             <li [className]="router.url.includes('orders') ? 'active' : ''">
               <a [routerLink]="isAdministrator ? 'private/administration/orders' : 'private/orders'">Commandes</a>
             </li>
-            <li [className]="router.url.includes('products') ? 'active' : ''" *ngIf="isAdministrator">
+            <li [className]="router.url.includes('products') || router.url.includes('pastry') ? 'active' : ''" *ngIf="isAdministrator">
               <a routerLink="private/administration/products">Produits</a>
             </li>
             <li [className]="router.url.includes('coordinates') ? 'active' : ''" *ngIf="!isAdministrator">

@@ -219,10 +219,6 @@ select {
   margin-left: 12px;
 }
 
-.text-center {
-  display: flex;
-}
-
 @media screen and (max-width: 500px) {
   .search-card .row-cols-2 {
     display: block;
