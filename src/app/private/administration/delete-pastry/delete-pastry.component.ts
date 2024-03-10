@@ -46,6 +46,6 @@ export class DeletePastryComponent {
   }
 
   cancel() {
-    this.router.navigate(['home']);
+    this.router.navigate(['private/administration/products']);
   }
 }

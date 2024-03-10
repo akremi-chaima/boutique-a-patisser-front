@@ -3,24 +3,18 @@
   Shop
 -----------------------*/
 .shop {
-  padding-top: 80px;
+  padding-top: 30px;
 }
 
 product {
   padding-top: 50px;
 }
 
-.product-item {
-  margin-bottom: 40px;
-}
 .product-item:hover .product-item-pic .product-label span {
   background: #FE8EBF;
   color: #ffffff;
 }
-.product-item:hover .product-item-text .product-item-price {
-  opacity: 0;
-  visibility: hidden;
-}
+
 .product-item:hover .product-item-text .cart_add {
   opacity: 1;
   visibility: visible;
@@ -32,6 +26,7 @@ product {
   position: relative;
   background-position: center;
 }
+
 .product-item-pic .product-label {
   position: absolute;
   left: 0;
@@ -39,6 +34,7 @@ product {
   text-align: center;
   width: 100%;
 }
+
 .product-item-pic .product-label span {
   display: inline-block;
   font-size: 14px;
@@ -223,6 +219,10 @@ select {
   margin-left: 12px;
 }
 
+.text-center {
+  display: flex;
+}
+
 @media screen and (max-width: 500px) {
   .search-card .row-cols-2 {
     display: block;
@@ -232,5 +232,27 @@ select {
   .search-card .col-6 {
     width: 100%;
   }
+}
+
+.product-item {
+  border: solid 2px #FEF6F7;
+}
+
+.col-6.text-center {
+  display: block;
+  margin-top: 5px;
+}
+
+.buttons {
+  border-bottom: solid 2px #FEF6F7;
+  border-left: solid 2px #FEF6F7;
+  border-right: solid 2px #FEF6F7;
+  height: 40px;
+  width: 306px;
+  margin-left: 0;
+}
+
+.separator {
+  border-right: solid 2px #FEF6F7;
 }
 

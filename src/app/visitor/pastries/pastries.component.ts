@@ -8,11 +8,18 @@ import { CollectionService } from '../../api-services/collection.service';
 import { SubCollectionService } from '../../api-services/subCollection.service';
 import { CollectionInterface } from '../../models/collection.interface';
 import { SubCollectionInterface } from '../../models/subCollection.interface';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import { CategoryInterface } from '../../models/category.interface';
 import { FlavourInterface } from '../../models/flavour.interface';
 import { CategoryService } from '../../api-services/category.service';
 import { FlavourService } from '../../api-services/flavour.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pastries',
@@ -26,11 +33,11 @@ import { FlavourService } from '../../api-services/flavour.service';
   styleUrl: './pastries.component.css'
 })
 export class PastriesComponent {
+
   @Input()
-  hideBanner: boolean | undefined;
-  // @ts-ignore
+  isPublic: boolean;
+
   form: FormGroup;
-  // @ts-ignore
   control: FormControl;
   selectedPastry: PastryInterface|null = null;
   pastries : Array<PastryInterface> = [];
@@ -60,6 +67,7 @@ export class PastriesComponent {
     private categoryService: CategoryService,
     private flavourService: FlavourService,
     private formBuilder: FormBuilder,
+    private router: Router,
   ) {
   }
 
@@ -204,13 +212,16 @@ export class PastriesComponent {
     }
   }
 
-
   add(pastry: any) {
 
   }
 
   remove(pastry: any) {
 
+  }
+
+  navigateTo(url: string) {
+    this.router.navigate([url]);
   }
 
   getError(formControlValues: string): string {
@@ -225,7 +236,6 @@ export class PastriesComponent {
     }
     return errorMsg;
   }
-
 }
 
 

@@ -4,20 +4,13 @@ import { ApiService } from './api.service';
 import { PastryInterface } from '../models/pastry.interface';
 import { HandlePastryInterface } from '../models/handle-pastry.interface';
 import { PastriesPaginatorInterface } from '../models/pastries-paginator.interface';
-import {PastryFilterInterface} from "../models/pastry-filter.interface";
+import { PastryFilterInterface } from '../models/pastry-filter.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PastryService {
   constructor(private apiService: ApiService) {}
-
-  /**
-   * Get pastries list
-   */
-  getList(): Observable<Array<PastryInterface>> {
-    return this.apiService.get<Array<PastryInterface>>('pastries');
-  }
 
   /**
    *

@@ -166,6 +166,6 @@ export class UpdatePastryComponent {
   }
 
   cancel() {
-    this.router.navigate(['home']);
+    this.router.navigate(['private/administration/products']);
    }
  }

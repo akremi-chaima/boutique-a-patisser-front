@@ -86,9 +86,6 @@
             <li [className]="router.url.includes('about') ? 'active' : ''">
               <a routerLink="about-us">About</a>
             </li>
-            <li [className]="router.url.includes('shop') ? 'active' : ''">
-              <a routerLink="shop">Shop</a>
-            </li>
             <li [className]="router.url.includes('contact') ? 'active' : ''">
               <a routerLink="contact">Contact</a>
             </li>
@@ -102,8 +99,11 @@
             <li [className]="router.url.includes('orders') ? 'active' : ''">
               <a [routerLink]="isAdministrator ? 'private/administration/orders' : 'private/orders'">Commandes</a>
             </li>
-            <li [className]="router.url.includes('coordinates') ? 'active' : ''">
-              <a routerLink="private/coordinates" *ngIf="!isAdministrator">Mes coordonnées</a>
+            <li [className]="router.url.includes('products') ? 'active' : ''" *ngIf="isAdministrator">
+              <a routerLink="private/administration/products">Produits</a>
+            </li>
+            <li [className]="router.url.includes('coordinates') ? 'active' : ''" *ngIf="!isAdministrator">
+              <a routerLink="private/coordinates">Mes coordonnées</a>
             </li>
             <li [className]="router.url.includes('password') ? 'active' : ''">
               <a routerLink="private/update/password">Modifier mot de passe</a>
