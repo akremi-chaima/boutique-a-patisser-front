@@ -14,10 +14,10 @@ import { UserInterface } from '../../../models/user.interface';
 @Component({
   selector: 'app-update-user',
   standalone: true,
-    imports: [
-      CommonModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
@@ -27,7 +27,6 @@ export class UpdateUserComponent implements OnInit {
   user: UserInterface|null;
   control: FormControl;
   formSubmitted: boolean;
-  isSamePassword: boolean;
   errorMessage: string|null = null;
   errors: any = {
     firstName: {
@@ -65,7 +64,6 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit() {
     this.formSubmitted = false;
-    this.isSamePassword = true;
     this.user = null;
     this.userService.get().subscribe(
       response => {
@@ -102,7 +100,6 @@ export class UpdateUserComponent implements OnInit {
   }
   save() {
     this.formSubmitted = true;
-    this.isSamePassword = true;
     if (this.form.valid) {
       const user: UserInterface = {
         id: this.user.id,

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserInterface } from '../models/user.interface';
 import { CreateUserInterface } from '../models/create-user.interface';
+import { UpdatePasswordInterface } from '../models/update-password.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,13 @@ export class UserService {
    */
   update(user: UserInterface): Observable<any> {
     return this.apiService.put<any>('private/update/user', user);
+  }
+
+  /**
+   * Update password
+   * @param data
+   */
+  updatePassword(data: UpdatePasswordInterface): Observable<any> {
+    return this.apiService.put<any>('private/update/password', data);
   }
 }
