@@ -15,6 +15,7 @@ import { OrdersListComponent } from './private/administration/orders-list/orders
 import { OrdersComponent } from './private/customer/orders/orders.component';
 import { UpdatePasswordComponent } from './private/common/update-password/update-password.component';
 import { PastriesListComponent } from './private/administration/pastries-list/pastries-list.component';
+import { BasketComponent } from './private/customer/basket/basket.component';
 
 export const routes: Routes = [
   /*************************************************** Administrator *******************************************************/
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'private/administration/pastry/delete/:id', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR] }, component: DeletePastryComponent },
   /*************************************************** Customer *******************************************************/
   { path: 'private/orders', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: OrdersComponent },
+  { path: 'private/basket', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: BasketComponent },
   { path: 'private/coordinates', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_CUSTOMER] }, component: UpdateUserComponent },
   /*************************************************** Common *******************************************************/
   { path: 'private/update/password', canActivate: [LocalStorageService], data: { expectedRoles: [ConstsHelper.ROLE_ADMINISTRATOR, ConstsHelper.ROLE_CUSTOMER] }, component: UpdatePasswordComponent },
