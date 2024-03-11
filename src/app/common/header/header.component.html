@@ -1,13 +1,8 @@
 <div class="menu-overlay"></div>
 <div class="menu-wrapper">
   <div class="cart">
-    <div class="cart-links">
-      <a href="#" class="search-switch"><img src="../../../assets/img/icon/search.png" alt=""></a>
-      <a href="#"><img src="../../../assets/img/icon/heart.png" alt=""></a>
-    </div>
     <div class="cart-item">
-      <a href="#"><img src="../../../assets/img/icon/cart.png" alt=""> <span>0</span></a>
-      <div class="cart-price">Cart: <span>$0.00</span></div>
+      <a href="#"><img src="../../../assets/img/icon/cart.png" alt=""> <span>{{ basketItems ? basketItems.length : 0 }}</span></a>
     </div>
   </div>
   <div class="logo">
@@ -60,13 +55,8 @@
               <a href="../../../index.html"><img src="../../../assets/img/logo.png" alt=""></a>
             </div>
             <div class="header-top-right">
-              <div class="header-top-right-links">
-                <a href="#" class="search-switch"><img src="../../../assets/img/icon/search.png" alt=""></a>
-                <a href="#"><img src="../../../assets/img/icon/heart.png" alt=""></a>
-              </div>
               <div class="header-top-right-cart">
-                <a href="#"><img src="../../../assets/img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart-price">Cart: <span>$0.00</span></div>
+                <a href="#"><img src="../../../assets/img/icon/cart.png" alt=""> <span>{{ basketItems ? basketItems.length : 0 }}</span></a>
               </div>
             </div>
           </div>
