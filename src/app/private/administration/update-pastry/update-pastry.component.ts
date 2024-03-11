@@ -31,11 +31,11 @@ import { HandlePastryInterface } from '../../../models/handle-pastry.interface';
   styleUrl:'./update-pastry.component.css'
  })
 export class UpdatePastryComponent {
-  // @ts-ignore
+
   form: FormGroup;
-  // @ts-ignore
   control: FormControl;
   formSubmitted: boolean = false;
+  selectedPicture: File|null;
   categories: Array<CategoryInterface> = [];
   flavours: Array<FlavourInterface> = [];
   subCollections: Array<SubCollectionInterface> =[];
@@ -79,6 +79,7 @@ export class UpdatePastryComponent {
 
   ngOnInit() {
     this.formSubmitted = false;
+    this.selectedPicture = null;
     this.categories = [];
     this.flavours = [];
     this.subCollections = [];
@@ -149,7 +150,7 @@ export class UpdatePastryComponent {
         categoryId : parseInt(this.form.get('categoryId')?.value, 10),
         subCollectionId : parseInt(this.form.get('subCollectionId')?.value, 10),
         flavourId : parseInt(this.form.get('flavourId')?.value, 10),
-        picture : null,
+        picture : this.selectedPicture,
         formats: this.form.get('formats')?.value
       }
 
@@ -167,5 +168,9 @@ export class UpdatePastryComponent {
 
   cancel() {
     this.router.navigate(['private/administration/products']);
-   }
+  }
+
+  getFile($event) {
+    this.selectedPicture = $event.target.files[0];
+  }
  }

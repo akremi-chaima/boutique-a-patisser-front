@@ -43,7 +43,7 @@ export class PastriesComponent {
   pastries : Array<PastryInterface> = [];
   pastriesPaginator: PastriesPaginatorInterface|null = null;
   currentPage: number = 1;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 10;
   pages: Array<number> = [];
   errorMessage: string|null = null;
   pastryFilter: PastryFilterInterface|null = null;
@@ -75,7 +75,7 @@ export class PastriesComponent {
     this.pastries = [];
     this.pastriesPaginator = null;
     this.currentPage = 1;
-    this.itemsPerPage = 2;
+    this.itemsPerPage = 10;
     this.pages = [];
     this.pastryFilter = null;
     this.collections = [];
@@ -105,9 +105,7 @@ export class PastriesComponent {
         this.flavours = response;
       }
     )
-
     this.initForm();
-
   }
 
   initForm() {

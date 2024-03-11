@@ -76,30 +76,31 @@
           </div>
     </div>
     <!------------------------------------------------- PASTRIES --------------------------------------------------------->
-    <div class="row mb-4">
-        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
-          <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
-            <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
-              <div class="product-label">
-                <span> {{ pastry.name}} </span>
-              </div>
-            </div>
-            <div class="product-item-text mb-3">
-              <h6><a href="#">Dozen Cupcakes</a></h6>
-              <div class="product-item-price">{{pastry.price}} £</div>
+    <div class="row mb-4" *ngIf="pastriesPaginator">
+      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
+        <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
+          <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
+            <div class="product-label">
+              <span> {{ pastry.name}} </span>
             </div>
           </div>
-          <div class="row buttons" *ngIf="!isPublic">
-            <div class="col-6 text-center separator">
-              <span class="bi-pencil cursor-pointer" (click)="navigateTo('private/administration/pastry/update/' + pastry.id)"></span>
-            </div>
-            <div class="col-6 text-center">
-              <span class="bi-trash cursor-pointer" (click)="navigateTo('private/administration/pastry/delete/' + pastry.id)"></span>
-            </div>
+          <div class="product-item-text mb-3">
+            <h6><a href="#">Dozen Cupcakes</a></h6>
+            <div class="product-item-price">{{pastry.price}} £</div>
           </div>
         </div>
+        <div class="row buttons mb-4" *ngIf="!isPublic">
+          <div class="col-6 text-center separator">
+            <span class="bi-pencil cursor-pointer" (click)="navigateTo('private/administration/pastry/update/' + pastry.id)"></span>
+          </div>
+          <div class="col-6 text-center">
+            <span class="bi-trash cursor-pointer" (click)="navigateTo('private/administration/pastry/delete/' + pastry.id)"></span>
+          </div>
+        </div>
+        <div class="mb-4" *ngIf="isPublic"></div>
+      </div>
 
-      <div class="text-center mb-4" *ngIf="pages.length > 1">
+      <div class="text-center mb-4 mt-4" *ngIf="pages.length > 1">
         <div class="paginator-content">
           <nav>
             <ul class="pagination">

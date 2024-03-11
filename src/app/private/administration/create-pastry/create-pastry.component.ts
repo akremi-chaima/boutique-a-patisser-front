@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import { CategoryInterface } from '../../../models/category.interface';
 import { FlavourInterface } from '../../../models/flavour.interface';
 import { SubCollectionInterface } from '../../../models/subCollection.interface';
@@ -24,9 +30,8 @@ import { HandlePastryInterface } from '../../../models/handle-pastry.interface';
   styleUrl: './create-pastry.component.css'
 })
 export class CreatePastryComponent {
-  // @ts-ignore
+
   form: FormGroup;
-  // @ts-ignore
   control: FormControl;
   formSubmitted: boolean = false;
   categories: Array<CategoryInterface> = [];
@@ -34,6 +39,7 @@ export class CreatePastryComponent {
   subCollections: Array<SubCollectionInterface> =[];
   errorMessage: string|null = null;
   addedFormats: Array<string> = [];
+  selectedPicture: File|null;
   errors: any = {
     price: {
       required: `Ce champ est obligatoire.`,
@@ -70,6 +76,7 @@ export class CreatePastryComponent {
 
 
   ngOnInit() {
+    this.selectedPicture = null;
     this.formSubmitted = false;
     this.categories = [];
     this.flavours =[];
@@ -122,7 +129,7 @@ export class CreatePastryComponent {
 
   save() {
     this.formSubmitted = true;
-    if (this.form.valid) {
+    if (this.form.valid && this.selectedPicture) {
       const pastry: HandlePastryInterface = {
         id : null,
         name : this.form.get('name')?.value,
@@ -132,7 +139,7 @@ export class CreatePastryComponent {
         categoryId : parseInt(this.form.get('categoryId')?.value, 10),
         subCollectionId : parseInt(this.form.get('subCollectionId')?.value, 10),
         flavourId : parseInt(this.form.get('flavourId')?.value, 10),
-        picture : null,
+        picture : this.selectedPicture,
         formats: this.form.get('formats')?.value
       }
       this.pastryService.create(pastry).subscribe(
@@ -146,8 +153,11 @@ export class CreatePastryComponent {
 
   }
 
+  getFile($event) {
+    this.selectedPicture = $event.target.files[0];
+  }
+
   cancel() {
     this.router.navigate(['private/administration/products']);
   }
-
 }
