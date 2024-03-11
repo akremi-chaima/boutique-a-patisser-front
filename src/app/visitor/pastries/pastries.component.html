@@ -145,19 +145,26 @@
             </div>
             <div class="col-8">
               <div class="price">{{selectedPastry?.price}} €</div>
-
-              <div class="panier">
-                <div class="primary-btn">
-                  <a href="#">Add to cart</a>
-                </div>
-                <div class="panier-quantity">
-                  <button class="btn-remove" (click)="remove(selectedPastry)">-</button>
-                  <span class="quantity">1</span>
-                  <button class="btn-add" (click)="add(selectedPastry)">+</button>
+              <p>{{selectedPastry?.description}}</p>
+              <div class="row col-4 mb-2">
+                <div class="formats" *ngIf="selectedPastry.formats.length > 0">
+                  <select class="form-select" (change)="setFormat($event)">
+                    <option *ngFor="let format of selectedPastry.formats" [value]="format">{{ format }}</option>
+                  </select>
                 </div>
               </div>
-              <h4>Description du produit:</h4>
-              <p>{{selectedPastry?.description}}</p>
+              <div class="row col-4 mb-2">
+                <div class="panier-quantity">
+                  <button class="btn-remove" (click)="remove()">-</button>
+                  <span class="quantity">{{quantity}}</span>
+                  <button class="btn-add" (click)="add()">+</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="primary-btn cursor-pointer" (click)="addToBasket()">
+                  Ajouter
+                </div>
+              </div>
             </div>
           </div>
         </div>

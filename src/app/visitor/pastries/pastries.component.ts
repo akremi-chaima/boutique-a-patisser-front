@@ -21,6 +21,8 @@ import { CategoryService } from '../../api-services/category.service';
 import { FlavourService } from '../../api-services/flavour.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
+import { ConstsHelper } from '../../consts.helper';
+import { BasketItemInterface } from '../../models/basket-item.interface';
 
 @Component({
   selector: 'app-pastries',
@@ -39,6 +41,8 @@ export class PastriesComponent {
   isPublic: boolean;
 
   form: FormGroup;
+  quantity: number;
+  formatName: string|null;
   control: FormControl;
   selectedPastry: PastryInterface|null = null;
   pastries : Array<PastryInterface> = [];
@@ -196,12 +200,17 @@ export class PastriesComponent {
     }
   }
 
-  setSelectedPastry(pastry: any) {
+  setSelectedPastry(pastry: PastryInterface) {
+    this.quantity = 1;
     this.selectedPastry = pastry;
+    this.formatName = pastry.formats.length > 0 ? pastry.formats[0] : null;
+  }
+
+  setFormat($event) {
+    this.formatName = $event.target.value;
   }
 
   // load subCollection by selected collection
-  // @ts-ignore
   loadSubCollections($event) {
     // reset filteredSubCollections for each collection selected
     this.filteredSubCollections = [];
@@ -212,12 +221,14 @@ export class PastriesComponent {
     }
   }
 
-  add(pastry: any) {
-
+  add() {
+    this.quantity += 1;
   }
 
-  remove(pastry: any) {
-
+  remove() {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    }
   }
 
   navigateTo(url: string) {
@@ -227,7 +238,6 @@ export class PastriesComponent {
   getError(formControlValues: string): string {
     let errorMsg = '';
     if (this.form.controls[formControlValues].invalid) {
-      // @ts-ignore
       Object.keys(this.form.controls[formControlValues].errors).map(
         key => {
           errorMsg = this.errors[formControlValues][key];
@@ -235,6 +245,29 @@ export class PastriesComponent {
       );
     }
     return errorMsg;
+  }
+
+  addToBasket() {
+    let pastry: BasketItemInterface = {
+      name : this.selectedPastry.name,
+      pastryId: this.selectedPastry.id,
+      formatName: this.formatName,
+      quantity : this.quantity,
+      price : this.selectedPastry.price
+    };
+
+    if (localStorage.getItem(ConstsHelper.BASKET_NAME)) {
+      let basketContent = JSON.parse(localStorage.getItem(ConstsHelper.BASKET_NAME)) as Array<BasketItemInterface>;
+      let basketIndex = basketContent.findIndex(item => item.pastryId == this.selectedPastry.id && item.formatName == this.formatName);
+      if (basketIndex != -1) {
+        basketContent[basketIndex].quantity += this.quantity;
+      } else {
+        basketContent.push(pastry);
+      }
+      localStorage.setItem(ConstsHelper.BASKET_NAME, JSON.stringify(basketContent));
+    } else {
+      localStorage.setItem(ConstsHelper.BASKET_NAME, JSON.stringify([pastry]));
+    }
   }
 }
 
