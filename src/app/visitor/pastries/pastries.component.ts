@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { PastryInterface } from '../../models/pastry.interface';
 import { PastryService } from '../../api-services/pastry.service';
 import { PastriesPaginatorInterface } from '../../models/pastries-paginator.interface';
@@ -20,14 +20,15 @@ import { FlavourInterface } from '../../models/flavour.interface';
 import { CategoryService } from '../../api-services/category.service';
 import { FlavourService } from '../../api-services/flavour.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-pastries',
   standalone: true,
   imports: [
-    NgIf,
-    NgForOf,
-    ReactiveFormsModule
+    CommonModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
   ],
   templateUrl: './pastries.component.html',
   styleUrl: './pastries.component.css'
@@ -54,6 +55,7 @@ export class PastriesComponent {
   displaySearchForm: boolean = false;
   categories: Array<CategoryInterface> = [];
   flavours: Array<FlavourInterface> = [];
+  environment = environment;
   errors: any = {
     name: {
       pattern: `La valeur saisie n'est pas valide.`

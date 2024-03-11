@@ -79,14 +79,11 @@
     <div class="row mb-4" *ngIf="pastriesPaginator">
       <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let pastry of pastriesPaginator?.data">
         <div class="product-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedPastry(pastry)">
-          <div class="product-item-pic set-bg" [style.background-image]="'url('+pastry.picture+ ')'" >
-            <div class="product-label">
-              <span> {{ pastry.name}} </span>
-            </div>
+          <div class="product-item-pic set-bg" *ngIf="pastry.picture" [style.background-image]="'url('+environment.apiUrl + pastry.picture+ ')'" >
           </div>
           <div class="product-item-text mb-3">
-            <h6><a href="#">Dozen Cupcakes</a></h6>
-            <div class="product-item-price">{{pastry.price}} £</div>
+            <h6><a href="#">{{ pastry.name}}</a></h6>
+            <div class="product-item-price">{{pastry.price}} €</div>
           </div>
         </div>
         <div class="row buttons mb-4" *ngIf="!isPublic">
@@ -133,7 +130,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content description">
+    <div class="modal-content description" *ngIf="selectedPastry">
       <div class="modal-header title-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="section-title">
@@ -144,10 +141,10 @@
         <div class="container">
           <div class="row g-5">
             <div class="col-4">
-              <img class="img-fluid rounded" src="../../../assets/img/pastries/product-1.jpg" alt="">
+              <img class="img-fluid rounded" *ngIf="selectedPastry.picture" [src]="environment.apiUrl + selectedPastry.picture" alt="">
             </div>
             <div class="col-8">
-              <div class="price">{{selectedPastry?.price}} £</div>
+              <div class="price">{{selectedPastry?.price}} €</div>
 
               <div class="panier">
                 <div class="primary-btn">
