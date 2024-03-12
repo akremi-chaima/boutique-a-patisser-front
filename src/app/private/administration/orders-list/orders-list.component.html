@@ -1,3 +1,46 @@
+<!------------------------------------------------- FILTER --------------------------------------------------------->
+<div class="search-card mb-3 mt-4">
+  <div class="search-header" (click)="searchFormVisibility(!displaySearchForm)">
+    <span class="search-title">Filtre</span>
+    <span class="icon" *ngIf="!displaySearchForm"><i class="bi bi-plus-square"></i></span>
+    <span class="icon" *ngIf="displaySearchForm" ><i class="bi bi-file-minus"></i></span>
+  </div>
+  <div class="row search-form mt-3" *ngIf="displaySearchForm">
+    <form [formGroup]="form">
+      <div class="container">
+        <div class="row row-cols-2 form-group mb-2">
+          <div class="col-6">
+            <label class="form-label">Mot clé:</label>
+            <input type="text" class="form-control" formControlName="userName" placeholder="XXXX">
+          </div>
+          <div class="col-6">
+            <label class="form-label">Date:</label>
+            <input type="text" class="form-control" formControlName="date" placeholder="DD/MM/YYYY">
+          </div>
+        </div>
+
+        <div class="row row-cols-2 form-group">
+          <label class="form-label">Statut:</label>
+          <select class="form-select" formControlName="statusId">
+            <option value=""></option>
+            <option *ngFor="let status of statusList" [value]="status.id">{{ status.name }}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col text-center">
+          <button type="button" class="primary-btn" (click)="reset()">Réinitialiser</button>
+        </div>
+        <div class="col text-center">
+          <button type="submit" class="primary-btn" (click)="search()">Rechercher</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <table class="table">
   <thead class="table-dark">
   <tr>

@@ -28,3 +28,59 @@
   display: flex;
   margin: auto;
 }
+
+/********************* SEARCH **************************/
+.search-card {
+  border-radius: 32px;
+  background: #FEF6F7;
+  padding: 30px 30px;
+  width: 80%;
+  margin: auto;
+}
+
+.search-header {
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.search-header .search-title {
+  color: #FE8EBF !important;
+  font-family: 'Manrope-bold', serif;
+}
+
+.search-header .icon {
+  color: #FE8EBF !important;
+  font-family: 'Manrope-bold', serif;
+  font-size: 20px;
+  float: right;
+}
+
+.search-form .form-select, .search-form .form-control {
+  width: 90%;
+}
+
+.form-control {
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+.form-label {
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 500px) {
+  .search-card .row-cols-2 {
+    display: block;
+    width: 100%;
+  }
+
+  .search-card .col-6 {
+    width: 100%;
+  }
+}
+
+.search-card .form-select {
+  width: 93%;
+  margin-left: 25px;
+}
