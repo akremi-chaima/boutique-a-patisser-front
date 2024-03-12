@@ -10,11 +10,11 @@
             <div class="row item" *ngFor="let item of basketItems">
               <div class="product-name">{{ item.name }}</div>
               <div class="basket-details"><strong>Quantité:</strong> {{ item.quantity }}<span *ngIf="item.formatName"> | <strong>Format:</strong> {{ item.formatName }}</span> | <strong>Prix unitaire:</strong> {{ item.price }}€</div>
-              <div class="delete">Supprimer</div>
+              <div class="delete" (click)="delete(item)">Supprimer</div>
             </div>
           </div>
           <div class="d-flex justify-content-center" *ngIf="basketItems.length > 0">
-            <button type="button" class="primary-btn">Commander</button>
+            <button type="button" class="primary-btn" (click)="saveOrder()">Commander</button>
           </div>
         </div>
       </div>

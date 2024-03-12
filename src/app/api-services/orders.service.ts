@@ -23,4 +23,12 @@ export class OrdersService {
   getAllOrders(filter: OrderFilterInterface): Observable<Array<OrderInterface>> {
     return this.apiService.post<Array<OrderInterface>>('private/orders', filter);
   }
+
+
+  /**
+   * Create order
+   */
+  create(basket: any): Observable<any> {
+    return this.apiService.post<any>('private/add/order', basket);
+  }
 }
