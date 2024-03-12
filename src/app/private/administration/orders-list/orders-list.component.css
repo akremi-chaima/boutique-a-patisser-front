@@ -2,3 +2,29 @@
   width: 80% !important;
   margin: 30px auto;
 }
+
+.description {
+  height: 250px !important;
+  width: 50vw !important;
+}
+
+.modal-dialog {
+  margin-left: 25vw !important;
+}
+
+.title-header {
+  display: grid;
+  border-bottom: none !important;
+}
+
+.modal .primary-btn {
+  display: flex;
+  margin: auto;
+  width: 180px !important;
+}
+
+.form-select {
+  width: 80%;
+  display: flex;
+  margin: auto;
+}

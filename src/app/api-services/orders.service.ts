@@ -31,4 +31,12 @@ export class OrdersService {
   create(basket: any): Observable<any> {
     return this.apiService.post<any>('private/add/order', basket);
   }
+
+  /**
+   * @param orderId
+   * @param statusId
+   */
+  updateStatus(orderId: number, statusId: number): Observable<any> {
+    return this.apiService.put<any>('private/update/order/status/' + orderId + '/' + statusId, {});
+  }
 }

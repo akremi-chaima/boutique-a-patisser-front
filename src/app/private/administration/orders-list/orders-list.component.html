@@ -27,7 +27,39 @@
         <div *ngIf="item.formatName">Format: {{ item.formatName }}</div>
       </div>
     </td>
-    <td></td>
+    <td>
+      <span class="bi-pencil cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setSelectedOrder(order)"></span>
+    </td>
   </tr>
   </tbody>
 </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content description" *ngIf="selectedOrder">
+      <div class="modal-header title-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="section-title">
+          <h2 class="modal-title text-center" id="exampleModalLabel">Modifier statut</h2>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div class="row g-5">
+            <div class="row">
+              <select class="form-select" [(ngModel)]="selectedStatusId">
+                <option *ngFor="let status of statusList" [value]="status.id">{{ status.name }}</option>
+              </select>
+              <div class="primary-btn cursor-pointer mt-4" (click)="save()">
+                Enregistrer
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
