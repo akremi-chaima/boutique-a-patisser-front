@@ -16,6 +16,7 @@ import { OrdersComponent } from './private/customer/orders/orders.component';
 import { UpdatePasswordComponent } from './private/common/update-password/update-password.component';
 import { PastriesListComponent } from './private/administration/pastries-list/pastries-list.component';
 import { BasketComponent } from './private/customer/basket/basket.component';
+import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   /*************************************************** Administrator *******************************************************/
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'subscription', component: SubscriptionComponent },
   { path: '**', component: HomeComponent },
 ];

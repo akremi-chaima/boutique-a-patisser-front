@@ -41,4 +41,12 @@ export class UserService {
   updatePassword(data: UpdatePasswordInterface): Observable<any> {
     return this.apiService.put<any>('private/update/password', data);
   }
+
+  /**
+   * Reset password
+   * @param email
+   */
+  resetPassword(email: string): Observable<any> {
+    return this.apiService.get<any>('reset/password/' + email);
+  }
 }
