@@ -1,17 +1,13 @@
 .contact .map {
-  height: 400px;
-  margin-bottom: 70px;
+  height: 330px;
 }
 
 .contact-address {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #e8eff4;
-  margin-bottom: 70px;
-}
-
-.contact-address-item {
   margin-bottom: 30px;
 }
+
 .contact-address-item h6 {
   color: #111111;
   font-weight: 600;
