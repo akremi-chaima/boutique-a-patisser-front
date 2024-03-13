@@ -81,3 +81,14 @@
 .contact-form form textarea:last-child {
   color: #111111;
 }
+
+@media screen and (max-width: 500px) {
+  .contact-address {
+    margin-left: 30px;
+  }
+
+  .breadcrumb-option {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
