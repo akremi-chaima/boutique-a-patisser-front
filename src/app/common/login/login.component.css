@@ -11,3 +11,10 @@ a {
   font-style: italic;
   font-family: "Playfair Display", serif;
 }
+
+@media screen and (max-width: 500px) {
+  .login-form {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

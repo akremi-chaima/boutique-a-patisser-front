@@ -282,6 +282,10 @@ select {
   .modal-body .col-8 {
     width: 100%;
   }
+
+  .buttons {
+    width: 100% !important;
+  }
 }
 
 .product-item {
