@@ -64,11 +64,11 @@
 
              </div>
 
-              <div class="row mt-3">
+              <div class="row mt-3 filter-buttons">
                 <div class="col text-center">
                   <button type="button" class="primary-btn" (click)="reset()">Réinitialiser</button>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center search-button">
                   <button type="submit" class="primary-btn" (click)="search()">Rechercher</button>
                 </div>
               </div>
@@ -140,7 +140,7 @@
       <div class="modal-body">
         <div class="container">
           <div class="row g-5">
-            <div class="col-4">
+            <div class="col-4 modal-image">
               <img class="img-fluid rounded" *ngIf="selectedPastry.picture" [src]="environment.apiUrl + selectedPastry.picture" alt="">
             </div>
             <div class="col-8">

@@ -89,3 +89,24 @@
   right: 30px;
 }
 
+@media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+    height: 410px;
+    margin-top: 30px;
+  }
+
+  #carouselExampleDark {
+    height: auto !important;
+    margin-bottom: 15px;
+  }
+
+  .home-carousel {
+    padding: 0 !important;
+  }
+
+  .hero-text h2 {
+    font-size: 24px;
+  }
+}
+

@@ -76,7 +76,7 @@ product {
 }
 
 .description {
-  height: 500px !important;
+  height: auto !important;
   width: 60vw !important;
 }
 
@@ -242,6 +242,44 @@ select {
   }
 
   .search-card .col-6 {
+    width: 100%;
+  }
+
+  .filter-buttons .search-button{
+    margin-top: 15px;
+  }
+
+  .modal-content {
+    width: 100% !important;
+  }
+
+  .modal-dialog {
+    margin-top: 50px;
+    margin-left: 10px !important;
+  }
+
+  .section-title {
+    margin-bottom: 0;
+  }
+
+  .section-title h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .formats select {
+    width: 200px;
+  }
+
+  .g-5, .gx-5 {
+    --bs-gutter-x: 10px;
+  }
+
+  .modal-body .container .modal-image {
+    display: contents;
+  }
+
+  .modal-body .col-8 {
     width: 100%;
   }
 }
