@@ -1,17 +1,55 @@
-<div class="menu-overlay"></div>
-<div class="menu-wrapper">
-  <div class="cart">
-    <div class="cart-item">
-      <a routerLink="private/basket"><img src="../../../assets/img/icon/cart.png" alt=""> <span>{{ basketItems ? basketItems.length : 0 }}</span></a>
+<nav class="navbar navbar-expand-sm navbar-light bg-light" id="mobile-menu">
+  <div class="container">
+    <input class="checkbox" type="checkbox" id="menuCheckbox"/>
+    <div class="hamburger-lines">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </div>
+    <div class="logo">
+      <a class="navbar-brand" href="/">
+        <img src="../../../assets/img/logo.png">
+      </a>
+    </div>
+    <div class="hamburger-lines"></div>
+    <div class="menu-items" *ngIf="router.url.includes('private')">
+      <ul>
+        <li class="nav-item" [className]="router.url.includes('orders') ? 'active' : ''">
+          <a [routerLink]="isAdministrator ? 'private/administration/orders' : 'private/orders'">Commandes</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('products') || router.url.includes('pastry') ? 'active' : ''" *ngIf="isAdministrator">
+          <a routerLink="private/administration/products">Produits</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('coordinates') ? 'active' : ''" *ngIf="!isAdministrator">
+          <a routerLink="private/coordinates">Mes coordonnées</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('password') ? 'active' : ''">
+          <a routerLink="private/update/password">Modifier mot de passe</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="logout()">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+    <!------------------------------------- PUBLIC HEADER -------------------------------------------->
+    <div class="menu-items" *ngIf="!router.url.includes('private')">
+      <ul>
+        <li class="nav-item" [className]="router.url.includes('home') ? 'active' : ''">
+          <a routerLink="home">Home</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('about') ? 'active' : ''">
+          <a routerLink="about-us">About</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('contact') ? 'active' : ''">
+          <a routerLink="contact">Contact</a>
+        </li>
+        <li class="nav-item" [className]="router.url.includes('login') ? 'active' : ''">
+          <a routerLink="login">Mon compte</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <div class="logo">
-    <a href="../../../index.html"><img src="../../../assets/img/logo.png" alt=""></a>
-  </div>
-  <div id="mobile-menu-wrap"></div>
-  <div class="option">
-  </div>
-</div>
+</nav>
 
 <header class="header">
   <div class="header-top">
