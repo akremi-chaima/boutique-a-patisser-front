@@ -317,3 +317,15 @@ ol {
   font-size: 13px;
 }
 
+.spad {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media screen and (max-width: 500px) {
+  .spad {
+    padding-top: 0  !important;
+    padding-bottom: 0 !important;
+  }
+}
+

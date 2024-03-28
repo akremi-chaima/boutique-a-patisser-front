@@ -1,3 +1,6 @@
+.instagram {
+  padding-top: 100px;
+}
 .instagram-text {
   padding-top: 90px;
 }
@@ -37,3 +40,10 @@
 .instagram-pic img {
   min-width: 100%;
 }
+
+@media screen and (max-width: 991px) {
+  .instagram {
+    padding-top: 0 !important;
+  }
+}
+

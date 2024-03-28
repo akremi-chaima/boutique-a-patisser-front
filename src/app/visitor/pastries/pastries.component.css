@@ -314,3 +314,9 @@ select {
   margin: auto;
   display: inline-block;
 }
+
+.line {
+  color: #FE8EBF;
+  border: solid 1px;
+  margin-bottom: 65px;
+}
