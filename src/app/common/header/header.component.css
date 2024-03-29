@@ -4,7 +4,7 @@
 
 .header-top {
   position: relative;
-  background: #ffffff;
+  background: #ffe6f1;
 }
 
 .header-top-inner {
@@ -241,6 +241,12 @@
   display: none;
 }
 
+.header-logo img {
+  width: 100px !important;
+  position: relative;
+  z-index: 99999;
+}
+
 /*****************************************MOBILE MENU******************************************/
 #mobile-menu {
   display: none;
@@ -392,6 +398,10 @@
     color: #FE8EBF !important;
     text-decoration: underline;
     font-weight: 700;
+  }
+
+  .logo img {
+    width: 55px;
   }
 }
 
